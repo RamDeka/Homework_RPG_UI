@@ -2,21 +2,23 @@ using UnityEngine;
 
 public class Player : Character
 {
-    [SerializeField] private Weapon activeWeapon;
+    [SerializeField] private Weapon[] weapons = new Weapon[3];
+    
+  
+    private int activeWeaponIndex = 0;
+
     public override void Attack(Character enemyToHit)
     {
-        float damage = activeWeapon.GetDamage();
+      
+        float damage = weapons[activeWeaponIndex].GetDamage();
         enemyToHit.TakeDamage(damage);
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        
+  
+        if (Input.GetKeyDown(KeyCode.Alpha1)) activeWeaponIndex = 0;
+        if (Input.GetKeyDown(KeyCode.Alpha2)) activeWeaponIndex = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha3)) activeWeaponIndex = 2;
     }
 }

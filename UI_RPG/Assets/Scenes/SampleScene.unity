@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239172ccdeeea4a85a780f8b556ed5b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  health: 10
-  name: NotVincent
+  health: 20
+  characterName: Enemy
   minDamage: 2
   maxDamage: 4
 --- !u!4 &235495801
@@ -164,9 +164,59 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 361158674}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &361158673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 361158674}
+  - component: {fileID: 361158675}
+  m_Layer: 0
+  m_Name: PoisonEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &361158674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361158673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 235495801}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &361158675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361158673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb75c5bc37d643a0a4b6d093e12d135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoisonEnemy
+  health: 9
+  characterName: Poison
+  damagePerTick: 1.5
+  totalTicks: 3
+  tickInterval: 1
 --- !u!1 &418718463
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +274,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Attack
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -333,9 +383,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c04ec8c5dce8b4066bd5583c16729051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  health: 15
-  name: Vincent
-  activeWeapon: {fileID: 513411077}
+  health: 20
+  characterName: Pupok
+  weapons:
+  - {fileID: 513411077}
+  - {fileID: 2097461261}
+  - {fileID: 1804143023}
 --- !u!4 &479810426
 Transform:
   m_ObjectHideFlags: 0
@@ -351,6 +404,7 @@ Transform:
   m_Children:
   - {fileID: 513411078}
   - {fileID: 2097461260}
+  - {fileID: 1804143024}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &484208153
@@ -928,7 +982,7 @@ MonoBehaviour:
   enemy: {fileID: 235495800}
   playerHPText: {fileID: 484208155}
   playerNameText: {fileID: 1567726973}
-  enemyNametext: {fileID: 1625536530}
+  enemyNameText: {fileID: 1625536530}
   enemyHPText: {fileID: 641459896}
 --- !u!4 &730591763
 Transform:
@@ -1475,9 +1529,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 95, y: -319}
+  m_AnchoredPosition: {x: 0, y: -298}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1635936515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1572,6 +1626,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635936513}
   m_CullTransparentMesh: 1
+--- !u!1 &1804143022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1804143024}
+  - component: {fileID: 1804143023}
+  m_Layer: 0
+  m_Name: ScalingBlade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1804143023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804143022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04bc4b2b883e4e7ab3fd1b3ce76c38d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScalingBlade
+  minDamage: 1
+  maxDamage: 2
+  multiplierPerHit: 0.1
+--- !u!4 &1804143024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804143022}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 479810426}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1822600944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,6 +1719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2097461260}
+  - component: {fileID: 2097461261}
   m_Layer: 0
   m_Name: PoisonDagger
   m_TagString: Untagged
@@ -1640,6 +1742,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 479810426}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2097461261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097461259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91427a3cdf751420d9bc1b1d40b59c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoisonBlade
+  minDamage: 1.5
+  maxDamage: 4
+  poisonDamage: 1
+  poisonCount: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
